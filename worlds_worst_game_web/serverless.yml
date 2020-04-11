@@ -1,4 +1,4 @@
-worlds_worst_frontend:
+worlds_worst_game_web:
   component: serverless-next.js
   inputs:
     domain: "worldsworst.games"
