@@ -95,6 +95,7 @@ Game.getInitialProps = async ctx => {
 
     const {res} = ctx;
 
+    // If not authenticated, return to the login page
     if (!cookies.auth) {
         if (res) {
             res.writeHead(302, {

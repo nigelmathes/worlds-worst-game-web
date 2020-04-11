@@ -89,10 +89,8 @@ Verify.getInitialProps = async ctx => {
     const cookies = nookies.get(ctx);
     const {res} = ctx;
 
-    if (cookies.registering) {
-        return Verify
-    }
-    else {
+    // If the user is not registering, return to the login page
+    if (!cookies.registering) {
         if (res) {
             res.writeHead(302, {
                 Location: "/"
@@ -102,6 +100,7 @@ Verify.getInitialProps = async ctx => {
             return Router.push("/");
         }
     }
+    return Verify
 }
 
 export default Verify

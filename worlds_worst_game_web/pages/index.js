@@ -145,6 +145,7 @@ Login.getInitialProps = async ctx => {
 
     const {res} = ctx;
 
+    // If user authenticated, go to the game
     if (cookies.auth) {
         if (res) {
             res.writeHead(302, {
@@ -153,6 +154,17 @@ Login.getInitialProps = async ctx => {
             return res.end();
         } else {
             return Router.push("/game");
+        }
+    }
+    // If user registering, go to verification page
+    else if (cookies.registering) {
+        if (res) {
+            res.writeHead(302, {
+                Location: "/verify"
+            });
+            return res.end();
+        } else {
+            return Router.push("/verify");
         }
     }
     return Login
