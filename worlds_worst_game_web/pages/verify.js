@@ -8,6 +8,7 @@ import Head from "next/head";
 import Style from "../components/Style";
 import Typist from "react-typist";
 import nookies from "nookies";
+import axios from "axios";
 
 Amplify.configure(CognitoConfig);
 
@@ -19,7 +20,7 @@ const Verify = props => {
         setVerificationCode(e.currentTarget.value);
     };
 
-    const handleVerify = async e => {
+    const handleVerify = e => {
         if (e) e.preventDefault();
 
         const cookies = nookies.get(e);
@@ -29,6 +30,13 @@ const Verify = props => {
             .then(() => {
                 setMessage("Email verified");
                 nookies.destroy({}, "registering");
+                const inputs = {
+                    auth_token: "character_created",
+                    playerId: username,
+                };
+                const response = axios.post('https://5srul1jg1a.execute-api.us-east-1.amazonaws.com/dev/authenticate', inputs);
+                console.log(response)
+                setMessage(response.data);
                 Router.push("/")
             }).catch(e => {
             setMessage("Incorrect verification code. Try again.");

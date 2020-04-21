@@ -8,6 +8,7 @@ import Head from "next/head";
 import Style from "../components/Style";
 import Typist from "react-typist";
 import nookies from "nookies";
+import axios from "axios";
 
 Amplify.configure(CognitoConfig);
 
@@ -40,13 +41,21 @@ const Login = props => {
     const userLoggedIn = async e => {
         if (e) e.preventDefault();
 
-        // If user is logged in, go to the game page
+        // If user is logged in, update the login token, then go to the game page
         await Auth.currentAuthenticatedUser()
             .then(data => {
+                const jwtToken = data["signInUserSession"]["idToken"]["jwtToken"];
+                const inputs = {
+                    auth_token: jwtToken,
+                    playerId: username,
+                };
+                const response = axios.post('https://5srul1jg1a.execute-api.us-east-1.amazonaws.com/dev/authenticate', inputs);
+                console.log(response)
+                setMessage(response.data);
                 nookies.set(
                     {},
                     "auth",
-                    data["signInUserSession"]["idToken"]["jwtToken"]
+                    jwtToken
                 );
                 nookies.set({}, "username", data["username"]);
                 Router.push('/game')

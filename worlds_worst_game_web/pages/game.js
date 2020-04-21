@@ -7,9 +7,6 @@ import nookies from "nookies";
 import Router from 'next/router'
 
 const Game = props => {
-    if (props.player === "No Auth") {
-        return Router.push("/")
-    }
     const [name, setName] = useState(props.player.Player.name);
     const [message, setMessage] = useState([]);
     const [input, setInput] = useState("");
@@ -23,7 +20,7 @@ const Game = props => {
 
         const inputs = {
             action: input,
-            playerId: "player_hash",
+            playerId: props.cookies.username,
             enhanced: false,
         };
         const req = await axios.post(
@@ -107,16 +104,18 @@ Game.getInitialProps = async ctx => {
         }
     }
 
+    console.log(cookies.username)
     const inputs = {
         action: "get player info",
-        playerId: "player_hash",
+        playerId: cookies.username,
         enhanced: false,
     };
     const response = await axios.post('https://aiexd2xz1m.execute-api.us-east-1.amazonaws.com/dev/route', inputs);
     const output = await response.data;
 
     return {
-        player: output
+        player: output,
+        cookies: cookies
     }
 };
 
