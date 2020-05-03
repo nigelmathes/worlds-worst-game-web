@@ -93,7 +93,7 @@ const Verify = props => {
     )
 };
 
-Verify.getInitialProps = async ctx => {
+Verify.getInitialProps = ctx => {
     const cookies = nookies.get(ctx);
     const {res} = ctx;
 

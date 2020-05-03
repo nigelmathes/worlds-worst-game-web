@@ -149,7 +149,7 @@ const Login = props => {
     )
 };
 
-Login.getInitialProps = async ctx => {
+Login.getInitialProps = ctx => {
     const cookies = nookies.get(ctx);
 
     const {res} = ctx;

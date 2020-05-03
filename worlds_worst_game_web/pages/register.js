@@ -149,7 +149,7 @@ const Register = props => {
     )
 };
 
-Register.getInitialProps = async ctx => {
+Register.getInitialProps = ctx => {
     const cookies = nookies.get(ctx);
 
     const {res} = ctx;
