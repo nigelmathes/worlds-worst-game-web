@@ -104,7 +104,7 @@ Game.getInitialProps = async ctx => {
         }
     }
 
-    console.log(cookies.username)
+
     const inputs = {
         action: "get player info",
         playerId: cookies.username,
