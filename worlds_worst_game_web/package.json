@@ -1,23 +1,23 @@
 {
   "name": "worlds_worst_game_web",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Frontend for the world's worst game",
+  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "aws-amplify": "^3.0.23",
-    "aws-amplify-react": "^4.1.22",
+    "aws-amplify": "^4.0.3",
+    "aws-amplify-react": "^5.0.1",
     "axios": "^0.21.1",
-    "next": "^10.2.3",
-    "nookies": "^2.4.0",
-    "react": "16.12.0",
-    "react-dom": "16.12.0",
+    "next": "10.2.0",
+    "nookies": "^2.5.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-typist": "^2.0.5"
-  },
-  "devDependencies": {
-    "serverless-next.js": "^1.14.0"
   }
 }

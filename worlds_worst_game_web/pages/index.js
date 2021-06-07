@@ -45,13 +45,13 @@ const Login = props => {
         await Auth.currentAuthenticatedUser()
             .then(data => {
                 const jwtToken = data["signInUserSession"]["idToken"]["jwtToken"];
-                const inputs = {
-                    auth_token: jwtToken,
-                    playerId: username,
-                };
-                const response = axios.post('https://5srul1jg1a.execute-api.us-east-1.amazonaws.com/dev/authenticate', inputs);
-                console.log(response)
-                setMessage(response.data);
+                // const inputs = {
+                //     auth_token: jwtToken,
+                //     playerId: username,
+                // };
+                // const response = axios.post('https://5srul1jg1a.execute-api.us-east-1.amazonaws.com/dev/authenticate', inputs);
+                // console.log(response)
+                setMessage("Welcome!");
                 nookies.set(
                     {},
                     "auth",

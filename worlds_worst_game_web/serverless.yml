@@ -1,5 +1,5 @@
 worlds_worst_game_web:
-  component: serverless-next.js
+  component: "@sls-next/serverless-component"
   inputs:
     domain: "worldsworst.games"
   iamRoleStatements: # permissions for all of your functions can be set here
